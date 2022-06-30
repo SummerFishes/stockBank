@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    
+</head>
+<body>
+    <div class="trade-type" id="chooseMode">
+        <div class="trade-type-item  active" data-value="traditional">Traditionnal Trade</div>
+        <div class="trade-type-item" data-value="nlp">NLP Trade</div>
+    </div>
+    <div class="trade-tranditional">
+        <div class="trade-input-items">
+            <div class="trade-input-item">
+                <div class="trade-input-title">Client Name</div>
+                <input class="trade-input" placeholder="text input">
+            </div>
+            <div class="trade-input-item">
+                <div class="trade-input-title">Ticker</div>
+                <input class="trade-input" placeholder="text input">
+            </div>
+            <div class="trade-input-item">
+                <div class="trade-input-title">RIC</div>
+                <input class="trade-input" placeholder="text input">
+            </div>
+            <div class="trade-input-item">
+                <div class="trade-input-title">Size</div>
+                <input class="trade-input" placeholder="text input">
+            </div>
+            <div class="trade-input-item">
+                <div class="trade-input-title">Price</div>
+                <input class="trade-input" placeholder="text input">
+            </div>
+            <div class="trade-input-item">
+                <div class="trade-input-title">Currency</div>
+                <input class="trade-input" placeholder="text input">
+            </div>
+            <div class="trade-input-item">
+                <div class="trade-input-title">Issuer Sector</div>
+                <input class="trade-input" placeholder="text input">
+            </div>
+            <div class="trade-input-item">
+                <div class="trade-input-title">Salesperson</div>
+                <input class="trade-input" placeholder="text input">
+            </div>
+            <div class="trade-input-item">
+                <div class="trade-input-title">HT/PT</div>
+                <select class="trade-input">
+                    <option value="volvo" class="trade-input">HT</option>
+                    <option value="saab" class="trade-input">PT</option>
+                </select>
+            </div>
+        </div>
+        <div class="trade-submit-btns">
+            <button type="button" class="trade-btn trade-buy">Buy</button>
+            <button type="button" class="trade-btn trade-sell">Sell</button>
+        </div> 
+    </div>
+    <div class="sperate-line"></div>
+    <div class="fre-group">
+        <span class="fre-item active">1D</span>
+        <span class="fre-item">1W</span>
+        <span class="fre-item">2W</span>
+        <span class="fre-item">1M</span>
+        <span class="fre-item">3M</span>
+        <span class="fre-item">6M</span>
+        <span class="fre-item">1Y</span>
+        <span class="fre-item">YID</span>
+    </div>
+    <div class="data-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Client Name</th>
+                    <th>Client Side</th>
+                    <th>Ticker</th>
+                    <th>RIC</th>
+                    <th>Size</th>
+                    <th>Price</th>
+                    <th>Notional USD</th>
+                    <th>Currency</th>
+                    <th>Issue Sector</th>
+                    <th>Salesperson</th>
+                    <th>HT/PT</th>
+                  </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Date</td>
+                    <td>Client Name</td>
+                    <td>Buy</td>
+                    <td>Ticker</td>
+                    <td>Ric</td>
+                    <td>Size</td>
+                    <td>1300.24</td>
+                    <td>1300.78</td>
+                    <td>Currency</td>
+                    <td>Issue Sector</td>
+                    <td>Salesperson</td>
+                    <td>HT/PT</td>
+                  </tr>
+                  <tr>
+                    <td>Date</td>
+                    <td>Client Name</td>
+                    <td>Buy</td>
+                    <td>Ticker</td>
+                    <td>Ric</td>
+                    <td>Size</td>
+                    <td>1300.24</td>
+                    <td>1300.78</td>
+                    <td>Currency</td>
+                    <td>Issue Sector</td>
+                    <td>Salesperson</td>
+                    <td>HT/PT</td>
+                  </tr>
+                  <tr>
+                    <td>Date</td>
+                    <td>Client Name</td>
+                    <td>Buy</td>
+                    <td>Ticker</td>
+                    <td>Ric</td>
+                    <td>Size</td>
+                    <td>1300.24</td>
+                    <td>1300.78</td>
+                    <td>Currency</td>
+                    <td>Issue Sector</td>
+                    <td>Salesperson</td>
+                    <td>HT/PT</td>
+                  </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="data-summary">
+        <div class="summary-items">
+            <!-- <span class="total-buy">Total Buy:</div>
+            <span class="total-buy">Total Buy:</div>
+            <span class="total-buy">Total Buy:</div> -->
+        
+            <div class="summary-item">
+                <span class="total-buy">Total Buy:</span>
+                <span class="data">1300.26</span>
+                <span class="total-sell">Total Sell:</span>
+                <span class="data">1300.26</span>
+                <span class="total-net">Net Quantity:</span>
+                <span class="data">1300.26</span>
+                <span class="total-buy">Total Buy Notional:</span>
+                <span class="data">1300.26</span>
+                <span class="total-sell">Total Sell Notional:</span>
+                <span class="data">1300.26</span>
+                <span class="total-net">Net Notional:</span>
+                <span class="data">1300.26</span>
+            </div>
+        </div>
+        <span class="records"></span>
+    </div>
+
+    <script src="js/index.js"  type="text/javascript"></script>
+    <!-- <script>
+
+        function selectTradeType(evt){
+            const tradeTypeE1 = evt.currentTarget
+            // 
+            const activeE1 = tradeTypeE1.querySelector('.trade-type-item.active')
+            if(activeE1){
+                activeE1.classList.remove('.active')
+                const type = activeE1.dataset.value
+                document.querySelector('.trade-${type}').style.display='none'
+            }
+
+            const itemE1 = evt.target
+            itemE1.classList.add('active')
+            const type = itemE1.dataset.value
+            document.querySelector('.trade-${type}').style.display='flex'
+        }
+
+        function init(){
+            const freGroup = document.querySelector('.fre-group')
+            freGroup.addEventListener('click',(evt)=>{
+                const v= selectWindow(evt)
+                getChartData(v)
+                getTableData(v)
+            })
+
+            const tradeType = document.querySelector('.trade-type')
+            tradeType.addEventListener('click',(evt)=>{
+                selectTradeType(evt)
+            })
+            getTableData('1D')
+            getChartdata('1D')
+        }
+    </script> -->
+</body>
+</html>
