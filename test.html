@@ -7,6 +7,7 @@
     <!-- 和css链接 -->
     <link rel="stylesheet" type="text/css" href="test.css"/>
     <title>Citi Training Project</title>
+    <script src="node_modules/highcharts/highcharts.js"></script>
 </head>
 <body>
     <script src="./modules/test.js" type="module"></script>
@@ -70,8 +71,8 @@
             <div>
                 <div class="trade-input-title">HT/PT</div>
                 <select class="trade-input">
-                    <option value="">HT</option>
-                    <option value="">BT</option>
+                    <option value="HT">HT</option>
+                    <option value="BT">BT</option>
                 </select>
             </div>
         </div>
@@ -87,12 +88,12 @@
     <div class="fre-group">
         <span class="fre-item active" data-value="1D">1D</span>
         <span class="fre-item" data-value="1W">1W</span>
-        <span class="fre-item">2W</span>
-        <span class="fre-item">1M</span>
-        <span class="fre-item">3M</span>
-        <span class="fre-item">6M</span>
-        <span class="fre-item">1Y</span>
-        <span class="fre-item">YTD</span>
+        <span class="fre-item" data-value="2W">2W</span>
+        <span class="fre-item" data-value="1M">1M</span>
+        <span class="fre-item" data-value="3M">3M</span>
+        <span class="fre-item" data-value="6M">6M</span>
+        <span class="fre-item" data-value="1Y">1Y</span>
+        <span class="fre-item" data-value="YTD">YTD</span>
     </div>
 
     <div class="data-table">
@@ -114,7 +115,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!-- <tr>
                     <td>Date</td>
                     <td>ClientName</td>
                     <td>Buy</td>
@@ -169,12 +170,12 @@
                     <td>Issuer Sector</td>
                     <td>Salesperson</td>
                     <td>HT/PT</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
         <div class="data-summary">
             <div class="summary-items">
-                <span>
+                <!-- <span>
                     <label class="total-buy">Total Buy:</label>
                     1,300.26
                 </span>
@@ -201,9 +202,129 @@
                 <span class="records">
                     <label>Records:</label>
                     4
-                </span>
+                </span> -->
             </div>
         </div>
     </div>
+
+    <div id="data-chart"></div>
+    <!-- 引入 highcharts.js -->
+    <script>
+    var options = {
+        chart: {
+            zoomType: 'xy',
+            backgroundColor: 'rgb(23, 32, 42)',
+        },
+        title: {
+            text: 'Flow Analysis',
+            align:'left',
+            style:{'color': 'white'}
+        },
+        xAxis: [{ // x轴
+            categories: ['01/12/2018', '', '', '01/15/2018', '', '','01/18/2018', '', 
+                        '', '01/21/2018', '', '','01/24/2018','','','01/27/2018',
+                        '','','01/30/2018'],
+            crosshair: true,
+            opposite:true,
+            gridLineWidth:0.2,  // 
+            tickInterval: 3,   // 显示间距
+            labels: {
+			style: {
+				color: 'rgba(255,255,255,0.7)'
+			}
+		},
+        }],
+        yAxis: [{ // y轴(上)
+            max:8000,
+            min:-8000,
+            tickInterval:1000,
+            gridLineWidth:0.2,  // 
+            labels: {
+                // format: '{value}°C',
+                step:1,
+                style: {
+                    color: 'rgba(255,255,255,0.7)'
+                }
+            },
+            title: {
+                enabled:false,
+            }
+        }, { // y轴(下)
+            max:8000,
+            min:-8000,
+            tickInterval:1000,
+            labels: {
+                // format: '{value}°C',
+                step:1,
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
+            },
+            title: {
+                enabled:false,
+            },
+            visible:false
+        }],
+        tooltip: {
+            shared: true        //柱状图和折线图共享一个悬浮框显示数据
+        },
+        plotOptions:{           //图的样式
+            series:{
+                marker:{        //点
+                    fillColor:'white',
+                    symbol:'square',
+                    radius:3
+                },
+                stacking: 'normal'  // 让正负柱状图没有间距
+            },
+            column:{
+                // pointInterval: -1
+                pointPadding:-0.2    // 柱间距
+            }
+        },
+        legend: {               // 图例
+            layout: 'horizontal',  //两个图例并列
+            align: 'center',       //横向基位置
+            verticalAlign: 'bottom', //纵向基位置
+            x: 0,                 // x位置
+            y: 0,               // y位置
+            itemDistance: 100,
+            floating: true,
+            itemStyle:{'color':'rgba(255,255,255,0.7)', 'fontSize':'10px'},
+            backgroundColor: 'rgba(23, 32, 42, 0.1)',
+        },
+        series: [{               //图的数据
+            name: 'Buy',
+            type: 'column',
+            yAxis: 1,
+            borderColor:'black',
+            color: 'rgba(0, 176, 185, 1)',
+            data: [2000, 1000, 500, 5000, 6000, 2000, 1000, 500, 5000, 6000, 2000, 1000, 500, 5000, 6000, 2000, 1000, 500, 5000, 6000],
+            tooltip: {
+                valueSuffix: ' mm'	//悬浮在柱上显示的数据格式
+            },
+        },{
+            name: 'Sell',
+            type: 'column',
+            yAxis: 1,
+            borderColor:'black',
+            color: 'rgba(0, 176, 185, 0.5)',
+            data: [-3000, -2000, -100, -4000, -4000, -3000, -2000, -100, -4000, -4000, -3000, -2000, -100, -4000, -4000, -3000, -2000, -100, -4000, -4000],
+            tooltip: {
+                valueSuffix: ' mm'	//悬浮在柱上显示的数据格式
+            },
+        },{
+            name: 'Cumulative Net',
+            type: 'line',
+            color: 'rgba(173, 107, 11, 0.5)',
+            data: [-1000, -1000, 400, 1000, -1000, -1000, 400, 1000, -1000, -1000, 400, 1000, -1000, -1000, 400, 1000, -1000, -1000, 400, 1000],
+            tooltip: {
+                valueSuffix: '°'
+            }
+        }]
+	};
+	// 图表初始化函数
+	var chart = Highcharts.chart('data-chart', options);
+    </script>
 </body>
 </html>
