@@ -1,24 +1,38 @@
-import React from "react";
+import React,{useState} from "react";
 import FreItem from "./freItem";
+
+const ITEMS = [
+    {value :'1D',label :'1D',active : true},
+    {value :'1W',label :'1W',active : false},
+    {value :'2W',label :'2W',active : false},
+    {value :'1M',label :'1M',active : false},
+    {value :'3M',label :'3M',active : false},
+    {value :'6M',label :'6M',active : false},
+    {value :'1Y',label :'1Y',active : false},
+    {value :'YTD',label :'YTD',active : false}]
 
 export default function FreGroup(props){
 
-    const {selectFre} = props
+    const {selectFre, fre} = props
+    //ITEMS[fre].active = true
+    const [list, setList] = useState(ITEMS)
 
     function onClickHandler(evt) {
-        const freGroup = evt.currentTarget
         const freE1 = evt.target
 
-        if(freGroup == freE1){
-            return
-        }
+        const selectedVal = freE1.dataset.value
 
-        const activeEl = freGroup.querySelector('.fre-item.active')
-        if(activeEl){
-            activeEl.classList.remove('active')
-        }
+        ITEMS.forEach(item => {
+            item.active =false
+            if(item.value === selectedVal){
+                item.active = true
+            }
+        })
+        // ITEMS[fre].active = false
+        // ITEMS[selectedVal].active = true        
+        // setList(JSON.parse(JSON.stringify(ITEMS)))
+        setList(ITEMS)
 
-        freE1.classList.add('active')
 
         if(selectFre){
             selectFre(freE1.dataset.value)
@@ -27,12 +41,10 @@ export default function FreGroup(props){
 
     return <div className="fre-group" onClick={onClickHandler}>
         {
-            [{value :'1D',label :'1D',active : true},{value :'1W',label :'1W',active : false},
-            {value :'2W',label :'2W',active : false},{value :'1M',label :'1M',active : false},
-            {value :'3M',label :'3M',active : false},{value :'6M',label :'6M',active : false},
-            {value :'1Y',label :'1Y',active : false},{value :'YTD',label :'YTD',active : false}].map(item => {
-                return <FreItem value ={item.value} label ={item.label} active={item.active}/>
+            list.map(item => {
+                return <FreItem key={item.value} {...item}/>
             })
+
         }
 
         {/* <FreItem value = '1D' label = '1D' active={true}/>

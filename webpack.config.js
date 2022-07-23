@@ -3,8 +3,8 @@ const path = require('path')
 
 module.exports = {
     mode : 'development',
-    entry : './modules/pratice.js',
-    // entry : './index.js',
+    //entry : './modules/pratice.js',
+     entry : './index.js',
     output: {
         filename : 'main.js',
         path: path.resolve(__dirname, 'dist'),
@@ -62,7 +62,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './index.html',
+            // template: './index.html',
+            template: './test.html',
             inject: 'body',
         }),
     ],
