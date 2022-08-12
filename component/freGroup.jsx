@@ -13,8 +13,7 @@ const ITEMS = [
 
 export default function FreGroup(props){
 
-    const {selectFre, fre} = props
-    //ITEMS[fre].active = true
+    const {selectFre} = props
     const [list, setList] = useState(ITEMS)
 
     function onClickHandler(evt) {
@@ -28,14 +27,9 @@ export default function FreGroup(props){
                 item.active = true
             }
         })
-        // ITEMS[fre].active = false
-        // ITEMS[selectedVal].active = true        
-        // setList(JSON.parse(JSON.stringify(ITEMS)))
         setList(ITEMS)
-
-
         if(selectFre){
-            selectFre(freE1.dataset.value)
+            selectFre(selectedVal)
         }
     }
 
@@ -46,15 +40,6 @@ export default function FreGroup(props){
             })
 
         }
-
-        {/* <FreItem value = '1D' label = '1D' active={true}/>
-        <span data-value="1W" className="fre-item">1W</span>
-        <span data-value="2W" className="fre-item">2W</span>
-        <span data-value="1M" className="fre-item">1M</span>
-        <span data-value="3M" className="fre-item">3M</span>
-        <span data-value="6M" className="fre-item">6M</span>
-        <span data-value="1Y" className="fre-item">1Y</span>
-        <span data-value="YTD" className="fre-item">YTD</span> */}
     </div>
 
 }

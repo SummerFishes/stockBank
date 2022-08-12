@@ -4,8 +4,8 @@ import App from './container/app'
 import './css/pratice.css'
 
 function init(){
-    const containerE1 = document.querySelector('#container')
-    render(<App />, containerE1)
+    const container = document.querySelector('#container')
+    render(<App />, container)
 }
 
 init()
