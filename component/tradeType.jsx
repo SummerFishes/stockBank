@@ -3,7 +3,7 @@ import TradeItem from "./tradeItem"
 
 const ITEMS = [
     {value : 'traditional',label : 'Traditional Trade',active: true},
-    {value : 'nlp',label : 'NLP Trade',active: false},
+    {value : 'nlp',label : 'NLP Trade',active: false}
 ]
 
 export default function TradeType(props){
@@ -13,19 +13,18 @@ export default function TradeType(props){
     function onClickHandler(evt){
         const tradeE1 = evt.target
         const cur = tradeE1.dataset.value
-        console.log("目前：", cur)
-        ITEMS.forEach(item => {
+        const arr = ITEMS.map(item => {
             item.active = false
             if(item.value === cur){
                 item.active = true
             }
+            return item
         })
-        setList(ITEMS)
-        let pre = ""
+        let pre = ''
         if(ITEMS[0].value === cur) pre = ITEMS[1].value
-        else pre = ITEMS[0].value     
+        else pre = ITEMS[0].value 
+        setList(arr)    
         if(selectType){
-            // console.log(pre,cur)
             selectType(pre,cur)
         }
     }
@@ -37,4 +36,19 @@ export default function TradeType(props){
             })
         }
     </div>
+ 
+    // function onClickHandler(evt){
+    //     const curTarget = evt.currentTarget
+    //     const target = evt.target
+
+    //     const activeE1 = curTarget.querySelector('.trade-type-item.active')
+    //     activeE1.classList.toggle('active')
+    //     target.classList.toggle('active')
+    //     props.selectType && props.selectType(activeE1.dataset.value,target.dataset.value)
+    // }
+
+    // return <div className="trade-type" onClick={onClickHandler}>
+    //         <div data-value='traditional' className='trade-type-item active'>Traditional Trade</div>
+    //         <div data-value='nlp'  className='trade-type-item'>NLP Trade</div>
+    // </div>
 }
