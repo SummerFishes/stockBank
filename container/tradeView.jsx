@@ -11,9 +11,9 @@ export default function TradeView(props){
 
         document.querySelector(`.trade-${cur}`).style.display = 'flex'
 
-        if(props.selectType) {
-            props.selectType(pre,cur)
-        }
+        // if(props.selectType) {
+        //     props.selectType(pre,cur)
+        // }
     }
 
     return <section>
