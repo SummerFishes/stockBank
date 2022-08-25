@@ -18,8 +18,8 @@ module.exports = {
         port : 8080,
         hot : true,
         proxy: {
-            '/':{
-                target: 'http://localhost:5500',
+            '/trade':{
+                target: 'http://localhost:8081',
             },
         },
     },
